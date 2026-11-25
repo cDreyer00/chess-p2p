@@ -11,9 +11,10 @@ import {
   sq,
   squareName,
 } from '../chess';
+import { getSettings, pieceUrlFor } from './settings';
 
-export const pieceUrl = (p: Piece): string =>
-  `${import.meta.env.BASE_URL}pieces/${p.color}${p.type.toUpperCase()}.svg`;
+/** URL do SVG da peça no estilo escolhido nas configurações. */
+export const pieceUrl = (p: Piece): string => pieceUrlFor(getSettings().pieceSet, p.color, p.type);
 
 export interface BoardState {
   position: Position;

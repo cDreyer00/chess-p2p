@@ -81,8 +81,34 @@ Limitações:
 - A confiança no relógio é do anfitrião. Um anfitrião mal-intencionado que altere o código pode mentir sobre os tempos; os lances, não (o convidado recusa lance ilegal).
 - O tempo de rede (latência) do lance do convidado conta no relógio dele.
 
-## Peças
+## Peças e tabuleiros
 
-Conjunto **"cburnett"**, de Colin M.L. Burnett, baixado do Wikimedia Commons (`Chess_{k,q,r,b,n,p}{l,d}t45.svg`).
-Os arquivos têm licença tripla, à escolha: GFDL, BSD e GPL (com migração para CC BY-SA 3.0). Este projeto usa sob a licença **BSD**.
-Fonte: <https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces/Standard_transparent>. Arquivos em `public/pieces/`.
+O botão de engrenagem, no canto superior direito, abre as **Configurações**. Lá você escolhe o estilo das peças e o tema do tabuleiro. A escolha vale só para você: fica no `localStorage` do navegador e não vai para o adversário.
+
+- Dados dos estilos e temas: `src/ui/settings.ts` (`PIECE_SETS` e `BOARD_THEMES`).
+- Painel: `src/ui/settings-panel.ts`.
+- Para adicionar um estilo de peças, crie `public/pieces/<id>/` com os 12 SVGs (`wK.svg` … `bP.svg`) e inclua o item em `PIECE_SETS`.
+
+### Temas de tabuleiro (11)
+
+Verde (padrão), Marrom, Azul, Grafite, Roxo, Coral, Oceano, Areia, Madeira, Mármore e Noite. São cores e gradientes CSS próprios do projeto.
+
+### Estilos de peças (11) e licenças
+
+Os 10 estilos além do padrão vêm do repositório do lichess (`lichess-org/lila`, pasta `public/piece/`), com as licenças registradas no `COPYING.md` dele. Escolhi só conjuntos com licença livre que permite uso e redistribuição.
+
+| Pasta | Nome na tela | Autor | Licença |
+|---|---|---|---|
+| `classico` | Clássico (padrão) | Colin M.L. Burnett (Wikimedia Commons, `Chess_{k,q,r,b,n,p}{l,d}t45.svg`) | BSD (licença tripla GFDL/BSD/GPL; usado sob BSD) |
+| `merida` | Merida | Armando Hernandez Marroquin | GPLv2+ |
+| `chessnut` | Chessnut | Alexis Luengas | Apache 2.0 |
+| `fantasy` | Fantasia | Maurizio Monge | MIT |
+| `spatial` | Espacial | Maurizio Monge | MIT |
+| `celtic` | Celta | Maurizio Monge | MIT |
+| `rhosgfx` | Desenho | RhosGFX | CC0 1.0 |
+| `totoy` | Totoy | Kosal Sen | CC BY 4.0 |
+| `papercut` | Recorte | Nikolay Anzarov | CC BY 4.0 |
+| `kiwen-suwi` | Kiwen Suwi | neverRare | CC BY 4.0 |
+| `shapes` | Formas | flugsio | CC BY-SA 4.0 |
+
+Alteração feita nos arquivos: incluí o atributo `viewBox` nos SVGs de `classico` e `kiwen-suwi`, para a peça escalar com a casa.

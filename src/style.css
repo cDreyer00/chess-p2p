@@ -7,8 +7,12 @@
   --accent: #7fa650;
   --accent-2: #95bb4a;
   --danger: #c4493b;
+  /* Tema do tabuleiro: valores padrão; src/ui/settings.ts troca conforme a escolha. */
   --light: #eeeed2;
   --dark: #769656;
+  --light-bg: var(--light);
+  --dark-bg: var(--dark);
+  --last: rgba(246, 246, 105, 0.55);
   --board-size: min(92vw, calc(100vh - 150px), 720px);
   color-scheme: dark;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -81,13 +85,12 @@ input { font: inherit; color: var(--text); background: #1d1b19; border: 1px soli
   touch-action: none; position: relative; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 .sq { position: relative; display: flex; align-items: center; justify-content: center; }
-.sq.light { background: var(--light); }
-.sq.dark { background: var(--dark); }
-.sq.last.light { background: #f6f682; }
-.sq.last.dark { background: #baca44; }
+.sq.light { background: var(--light-bg); }
+.sq.dark { background: var(--dark-bg); }
+.sq.last::before { content: ''; position: absolute; inset: 0; background: var(--last); pointer-events: none; }
 .sq.selected { box-shadow: inset 0 0 0 100vmax rgba(20, 85, 30, 0.45); }
-.sq.check.dark { background: radial-gradient(circle, #ff3b3b 0%, #e02020 35%, rgba(200, 0, 0, 0) 75%), var(--dark); }
-.sq.check.light { background: radial-gradient(circle, #ff3b3b 0%, #e02020 35%, rgba(200, 0, 0, 0) 75%), var(--light); }
+.sq.check.dark { background: radial-gradient(circle, #ff3b3b 0%, #e02020 35%, rgba(200, 0, 0, 0) 75%), var(--dark-bg); }
+.sq.check.light { background: radial-gradient(circle, #ff3b3b 0%, #e02020 35%, rgba(200, 0, 0, 0) 75%), var(--light-bg); }
 .sq.target::after {
   content: ''; width: 30%; height: 30%; border-radius: 50%; background: rgba(20, 85, 30, 0.5);
   position: absolute; pointer-events: none; z-index: 2;
@@ -151,6 +154,35 @@ input { font: inherit; color: var(--text); background: #1d1b19; border: 1px soli
 .result-card p { margin: 0; }
 .result-card .score { font-size: 1.4rem; color: var(--muted); }
 
+/* ---------------- Configurações ---------------- */
+.settings-btn {
+  position: fixed; top: 10px; right: 10px; z-index: 60; width: 42px; height: 42px; padding: 0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; background: var(--panel); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.settings-overlay {
+  position: fixed; inset: 0; z-index: 70; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center;
+  justify-content: center; padding: 12px;
+}
+.settings {
+  background: var(--panel); border-radius: 12px; padding: 16px 18px; width: min(720px, 100%); max-height: 100%;
+  overflow-y: auto; display: flex; flex-direction: column; gap: 14px;
+}
+.settings header { display: flex; align-items: center; justify-content: space-between; }
+.settings h2 { margin: 0; font-size: 1.3rem; }
+.settings h3 { margin: 0 0 8px; font-size: 1rem; color: var(--muted); font-weight: 600; }
+.settings .close { background: none; border: none; font-size: 1.2rem; padding: 4px 8px; }
+.settings .small { margin: 0; font-size: 0.85rem; }
+.options { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px; }
+.option {
+  display: flex; flex-direction: column; gap: 6px; align-items: center; padding: 6px; background: var(--panel-2);
+  border: 2px solid transparent; border-radius: 8px;
+}
+.option.selected { border-color: var(--accent-2); background: #44503a; }
+.option:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.option-name { font-size: 0.85rem; }
+.preview { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; aspect-ratio: 2 / 1; border-radius: 4px; overflow: hidden; }
+.preview .sq img { width: 100%; height: 100%; }
+
 /* ---------------- Celular ---------------- */
 @media (max-width: 900px) {
   :root { --board-size: min(100vw - 16px, calc(100dvh - 210px), 640px); }
@@ -158,6 +190,8 @@ input { font: inherit; color: var(--text); background: #1d1b19; border: 1px soli
   .side { width: var(--board-size); max-height: none; }
   .moves { max-height: 140px; min-height: 60px; }
   .clock { font-size: 1.25rem; min-width: 84px; }
+  .settings-btn { top: 6px; right: 6px; width: 36px; height: 36px; }
+  .options { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
 }
 @media (max-width: 900px) and (max-height: 560px) {
   :root { --board-size: min(100vw - 16px, 92dvh, 640px); }

@@ -4,6 +4,7 @@ import { TIME_OPTIONS_MINUTES, formatClock } from '../game/clock';
 import { ABANDON_TIMEOUT_MS, Session } from '../game/session';
 import { GuestLink, HostLink, type LinkStatus, isValidRoomCode, newRoomCode } from '../net/peer';
 import { BoardView, pieceUrl } from './board';
+import { onSettingsChange } from './settings';
 
 const COLOR_NAME: Record<Color, string> = { w: 'Brancas', b: 'Pretas' };
 const PIECE_VALUE: Record<string, number> = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 0 };
@@ -57,6 +58,10 @@ export class App {
 
   constructor(private readonly root: HTMLElement) {
     window.addEventListener('hashchange', () => this.route());
+    // Novo estilo de peças: redesenha tabuleiro, peças capturadas e promoção.
+    onSettingsChange(() => {
+      if (this.board) this.render();
+    });
     this.route();
   }
 
