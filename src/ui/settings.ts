@@ -36,10 +36,16 @@ export const PIECE_SETS: readonly PieceSet[] = [
   { id: 'papercut', name: 'Recorte', author: 'Nikolay Anzarov', license: 'CC BY 4.0' },
   { id: 'kiwen-suwi', name: 'Kiwen Suwi', author: 'neverRare', license: 'CC BY 4.0' },
   { id: 'shapes', name: 'Formas', author: 'flugsio', license: 'CC BY-SA 4.0' },
+  { id: 'pirouetti', name: 'Pirueta', author: 'pirouetti', license: 'AGPLv3+' },
+  { id: 'pixel', name: 'Pixel', author: 'therealqtpi', license: 'AGPLv3+' },
+  { id: 'letter', name: 'Letras', author: 'usolando', license: 'AGPLv3+' },
+  { id: 'mpchess', name: 'MPChess', author: 'Maxime Chupin', license: 'GPLv3+' },
 ];
 
 const WOOD_GRAIN =
   'repeating-linear-gradient(97deg, rgba(0,0,0,0.05) 0 2px, transparent 2px 7px, rgba(255,255,255,0.05) 7px 9px, transparent 9px 15px)';
+const LINEN_WEAVE =
+  'repeating-linear-gradient(0deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 4px), repeating-linear-gradient(90deg, rgba(0,0,0,0.035) 0 1px, transparent 1px 4px)';
 const MARBLE_VEINS =
   'linear-gradient(125deg, transparent 30%, rgba(0,0,0,0.07) 33%, transparent 37%, transparent 62%, rgba(0,0,0,0.05) 65%, transparent 69%)';
 
@@ -72,6 +78,26 @@ export const BOARD_THEMES: readonly BoardTheme[] = [
     last: 'rgba(130, 190, 255, 0.45)',
   },
   { id: 'noite', name: 'Noite', light: '#7a7f9a', dark: '#3b3f58', last: 'rgba(120, 220, 255, 0.4)' },
+  { id: 'cereja', name: 'Cereja', light: '#f4dcdc', dark: '#a8475a', last: 'rgba(255, 225, 110, 0.55)' },
+  { id: 'menta', name: 'Menta', light: '#e3f4ea', dark: '#5fa88a', last: 'rgba(255, 170, 90, 0.5)' },
+  {
+    id: 'linho',
+    name: 'Linho',
+    light: '#ece4d4',
+    dark: '#a39783',
+    lightBg: `${LINEN_WEAVE}, linear-gradient(180deg, #f1eadb, #e5dccb)`,
+    darkBg: `${LINEN_WEAVE}, linear-gradient(180deg, #aa9e8a, #998d79)`,
+    last: 'rgba(90, 170, 230, 0.45)',
+  },
+  {
+    id: 'aurora',
+    name: 'Aurora',
+    light: '#d9ecef',
+    dark: '#4f6f9a',
+    lightBg: 'linear-gradient(135deg, #e4f4ee, #d4e4f2)',
+    darkBg: 'linear-gradient(135deg, #4c8a8c, #56609e)',
+    last: 'rgba(255, 210, 90, 0.55)',
+  },
 ];
 
 export interface Settings {

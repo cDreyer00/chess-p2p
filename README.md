@@ -89,13 +89,13 @@ O botão de engrenagem, no canto superior direito, abre as **Configurações**. 
 - Painel: `src/ui/settings-panel.ts`.
 - Para adicionar um estilo de peças, crie `public/pieces/<id>/` com os 12 SVGs (`wK.svg` … `bP.svg`) e inclua o item em `PIECE_SETS`.
 
-### Temas de tabuleiro (11)
+### Temas de tabuleiro (15)
 
-Verde (padrão), Marrom, Azul, Grafite, Roxo, Coral, Oceano, Areia, Madeira, Mármore e Noite. São cores e gradientes CSS próprios do projeto.
+Verde (padrão), Marrom, Azul, Grafite, Roxo, Coral, Oceano, Areia, Madeira, Mármore, Noite, Cereja, Menta, Linho e Aurora. São cores e gradientes CSS próprios do projeto.
 
-### Estilos de peças (11) e licenças
+### Estilos de peças (15) e licenças
 
-Os 10 estilos além do padrão vêm do repositório do lichess (`lichess-org/lila`, pasta `public/piece/`), com as licenças registradas no `COPYING.md` dele. Escolhi só conjuntos com licença livre que permite uso e redistribuição.
+Os 14 estilos além do padrão vêm do repositório do lichess (`lichess-org/lila`, pasta `public/piece/`), com as licenças registradas no `COPYING.md` dele. Escolhi só conjuntos com licença livre que permite uso e redistribuição.
 
 | Pasta | Nome na tela | Autor | Licença |
 |---|---|---|---|
@@ -110,5 +110,9 @@ Os 10 estilos além do padrão vêm do repositório do lichess (`lichess-org/lil
 | `papercut` | Recorte | Nikolay Anzarov | CC BY 4.0 |
 | `kiwen-suwi` | Kiwen Suwi | neverRare | CC BY 4.0 |
 | `shapes` | Formas | flugsio | CC BY-SA 4.0 |
+| `pirouetti` | Pirueta | pirouetti | AGPLv3+ |
+| `pixel` | Pixel | therealqtpi | AGPLv3+ |
+| `letter` | Letras | usolando | AGPLv3+ |
+| `mpchess` | MPChess | Maxime Chupin | GPLv3+ |
 
 Alteração feita nos arquivos: incluí o atributo `viewBox` nos SVGs de `classico` e `kiwen-suwi`, para a peça escalar com a casa.

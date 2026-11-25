@@ -10,12 +10,12 @@ beforeEach(() => {
 });
 
 describe('configurações visuais', () => {
-  it('tem 10 estilos além do padrão, com ids únicos', async () => {
+  it('tem 14 estilos além do padrão, com ids únicos', async () => {
     const { PIECE_SETS, BOARD_THEMES } = await import('./settings');
-    expect(PIECE_SETS).toHaveLength(11);
-    expect(BOARD_THEMES).toHaveLength(11);
-    expect(new Set(PIECE_SETS.map((p) => p.id)).size).toBe(11);
-    expect(new Set(BOARD_THEMES.map((t) => t.id)).size).toBe(11);
+    expect(PIECE_SETS).toHaveLength(15);
+    expect(BOARD_THEMES).toHaveLength(15);
+    expect(new Set(PIECE_SETS.map((p) => p.id)).size).toBe(15);
+    expect(new Set(BOARD_THEMES.map((t) => t.id)).size).toBe(15);
   });
 
   it('todo estilo de peças tem os 12 SVGs em public/pieces', async () => {
@@ -52,8 +52,8 @@ describe('configurações visuais', () => {
     const s = await import('./settings');
     const panel = new SettingsPanel();
     panel.button.click();
-    expect(document.querySelectorAll('[data-board]')).toHaveLength(11);
-    expect(document.querySelectorAll('[data-piece]')).toHaveLength(11);
+    expect(document.querySelectorAll('[data-board]')).toHaveLength(15);
+    expect(document.querySelectorAll('[data-piece]')).toHaveLength(15);
     document.querySelector<HTMLElement>('[data-board="oceano"]')!.click();
     document.querySelector<HTMLElement>('[data-piece="fantasy"]')!.click();
     expect(s.getSettings()).toEqual({ pieceSet: 'fantasy', boardTheme: 'oceano' });
